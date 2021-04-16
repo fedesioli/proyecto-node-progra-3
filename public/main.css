@@ -14,7 +14,7 @@
 .characters{
   color: blue;
 }
-.personajesPadre{
+.personasPadre{
   padding: 3%;;
   display: flex;
   flex-wrap: wrap;
@@ -30,7 +30,8 @@
   letter-spacing: 1px;
 }
 .tarjetaPadre{
-  width: 30%;
+  padding: 10px;
+  width: 20%;
   text-align: center;
 }
 .tarjetaHijo h3{
