@@ -1,0 +1,58 @@
+.headerPadre{
+  background-color: #E0E7FF;
+  text-align: center;
+  margin: 0;
+  height: 80px;
+}
+.headerPadre h2{
+  padding-top: 1%;
+  margin: 0;
+  font-family: 'Varela Round', sans-serif;
+  letter-spacing: 2px;
+  font-size: 35px;
+}
+.characters{
+  color: blue;
+}
+.personajesPadre{
+  padding: 3%;;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+
+.tarjetaHijo{
+  text-align: center;
+  border: 1px solid gray;
+  margin-bottom: 20px;
+  font-family: 'Varela Round', sans-serif;
+  letter-spacing: 1px;
+}
+.tarjetaPadre{
+  width: 30%;
+  text-align: center;
+}
+.tarjetaHijo h3{
+ color:  blue;
+}
+body{
+  margin: 0;
+}
+.imagenTarjeta{
+  padding: 1px;
+  width: 100%;
+}
+.footerPadre{
+  background-color: #E0E7FF;
+  text-align: center;
+  margin: 0;
+  height: 120px;
+}
+.footerPadre h2{
+  padding-top: 2%;
+  margin: 0;
+  font-family: 'Varela Round', sans-serif;
+  letter-spacing: 2px;
+  font-size: 25px;
+}
