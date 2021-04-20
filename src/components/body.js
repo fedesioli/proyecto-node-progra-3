@@ -10,6 +10,7 @@ class Body extends Component{
         this.state = {
             items: [],
             itemsOriginales: []
+           
         }
     }
 
@@ -31,20 +32,37 @@ class Body extends Component{
     }
 
     reset(){
-        this.setState({items: []})
-        // hay que hacer que resetee a los originales pero cuando ngo en vez de [] itemsOriginales me dice 
-        // que items originales no esta definido, cuando arriba si le pusimos valor y hasta aparece en el log si lo pedis
+        this.setState({items: this.state.itemsOriginales})
     }
+
+    // agregarTarjetas(value, event){
+    //     event.preventDefault();
+    //     fetch("https://randomuser.me/api/?results=" + value)
+    //         .then(resource => resource.json())
+    //         .then(data => { 
+    //             this.state.items.push(data.results)
+    //             console.log(data.results)
+    //         })
+    // }
     
     render(){
 
         return(
             <>
             <button onClick={this.reset.bind(this)}>Reset Originales</button>
+
+
+            {/* <form className="formAgregar" onSubmit={this.agregarTarjetas.bind(this, input.cantidad.value)}>
+                <div>cuantas tarjetas desea agregar?</div>
+                <input name="cantidad"/>
+                <input type="submit" value="Agregar tarjetas"  />
+            </form> */}
+           
+
             <div className='personasPadre'>    
                 {
                 this.state.items.map((persona)=>(
-                    <Tarjeta datospersona = {persona} key={persona.login.uuid} color="white" onDelete={this.borrarTarjeta}/> 
+                    <Tarjeta datospersona = {persona} key={persona.login.uuid} color="white" display="none" onDelete={this.borrarTarjeta}/> 
                 ))
                 }   
             
