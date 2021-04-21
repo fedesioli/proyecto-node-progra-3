@@ -35,15 +35,18 @@ class Body extends Component{
         this.setState({items: this.state.itemsOriginales})
     }
 
-    // agregarTarjetas(value, event){
-    //     event.preventDefault();
-    //     fetch("https://randomuser.me/api/?results=" + value)
-    //         .then(resource => resource.json())
-    //         .then(data => { 
-    //             this.state.items.push(data.results)
-    //             console.log(data.results)
-    //         })
-    // }
+    agregarTarjetas(){
+        let cantidad = document.querySelector(".cantidadAgregar").value
+        fetch("https://randomuser.me/api/?results=" + cantidad)
+            .then(resource => resource.json())
+            // .then(data => { 
+            //     let dataNueva = this.state.items.push(data.results)
+            //     this.setState({items: dataNueva})
+            //     console.log(data.results)
+                
+            // }) 
+            // nose porque no reconoce el "this"
+    }
     
     render(){
 
@@ -52,17 +55,15 @@ class Body extends Component{
             <button onClick={this.reset.bind(this)}>Reset Originales</button>
 
 
-            {/* <form className="formAgregar" onSubmit={this.agregarTarjetas.bind(this, input.cantidad.value)}>
-                <div>cuantas tarjetas desea agregar?</div>
-                <input name="cantidad"/>
-                <input type="submit" value="Agregar tarjetas"  />
-            </form> */}
+            <div>cuantas tarjetas desea agregar?</div>
+                <input className="cantidadAgregar" name="cantidad"/>
+                <button onClick={this.agregarTarjetas}>Agregar tarjetas</button>
            
 
             <div className='personasPadre'>    
                 {
                 this.state.items.map((persona)=>(
-                    <Tarjeta datospersona = {persona} key={persona.login.uuid} color="white" display="none" onDelete={this.borrarTarjeta}/> 
+                    <Tarjeta datospersona = {persona} key={persona.login.uuid} color="white" displayDetalle="none" onDelete={this.borrarTarjeta}/> 
                 ))
                 }   
             

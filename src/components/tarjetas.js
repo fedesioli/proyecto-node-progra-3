@@ -6,7 +6,7 @@ class Tarjeta extends Component{
         super(props);
         this.state = {
             colorOriginal: props.color,  
-            displayDetalles: props.display            
+            displayDetalles: props.displayDetalle            
         }
     }
 
