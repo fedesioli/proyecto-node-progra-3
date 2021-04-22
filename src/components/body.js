@@ -19,7 +19,7 @@ class Body extends Component{
             .then(resource => resource.json())
             .then(data => { 
                 this.setState({items: data.results, itemsOriginales: data.results})
-                console.log(data)
+                
             })
     }
 
@@ -28,7 +28,6 @@ class Body extends Component{
             return item.login.uuid !== idTarjeta;
         })
         this.setState({items: resultado});
-        // this.props.onBorrar(this.props.id)
     }
 
     reset(){
@@ -37,29 +36,35 @@ class Body extends Component{
 
     agregarTarjetas(){
         let cantidad = document.querySelector(".cantidadAgregar").value
+        console.log(cantidad);
+        
         fetch("https://randomuser.me/api/?results=" + cantidad)
             .then(resource => resource.json())
-            // .then(data => { 
-            //     let dataNueva = this.state.items.push(data.results)
-            //     this.setState({items: dataNueva})
-            //     console.log(data.results)
-                
-            // }) 
-            // nose porque no reconoce el "this"
+            .then(data => { 
+                let dataNueva = this.state.items.push(data.results)
+                this.setState({items: dataNueva})
+                console.log(dataNueva);         
+            }) 
     }
     
     render(){
 
         return(
             <>
-            <button onClick={this.reset.bind(this)}>Reset Originales</button>
-
-
-            <div>cuantas tarjetas desea agregar?</div>
-                <input className="cantidadAgregar" name="cantidad"/>
-                <button onClick={this.agregarTarjetas}>Agregar tarjetas</button>
-           
-
+            <div className="filtrosPadre">
+            <div>
+            <h4>Filtrar por nombre</h4>
+            <input className="cantidadAgregar" name="cantidad"/>
+            </div>
+            <div>
+            <h4>Filtrar por edad</h4>
+            <input className="cantidadAgregar" name="cantidad"/>
+            </div>
+            <div>
+            <h4>Filtrar por nacionalidad</h4>
+            <input className="cantidadAgregar" name="cantidad"/>
+            </div>
+            </div>
             <div className='personasPadre'>    
                 {
                 this.state.items.map((persona)=>(
@@ -67,7 +72,19 @@ class Body extends Component{
                 ))
                 }   
             
-            </div>  
+            </div>
+
+            <div style={{textAlign: "center"}}>
+            <button onClick={this.reset.bind(this)}>Reset Originales</button>
+            </div>
+
+            <div style={{textAlign: "center", padding: "20px"}}>
+                <h3>
+                cuantas tarjetas desea agregar?
+                </h3>
+                <button onClick={this.agregarTarjetas}>Agregar tarjetas</button>  
+                <input className="cantidadAgregar" name="cantidad"/>
+            </div>
             </> 
         )
     }
