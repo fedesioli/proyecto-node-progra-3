@@ -46,6 +46,33 @@ class Body extends Component{
                 console.log(dataNueva);         
             }) 
     }
+    filtrarTarjetas(){
+        let filterData = document.querySelector(".filterData").value
+        let filtrarPor = document.querySelector(".filterBy").value
+        console.log(filterData)
+        console.log(filtrarPor)
+       
+        if (filtrarPor === "edad"){
+            let resultado = this.state.items.filter( (item)=> {
+                return item.dob.age === filterData;
+            })
+            this.setState({items: resultado});
+        }
+        else if(filtrarPor === "nombre"){
+            let resultado = this.state.items.filter( (item)=> {
+                return item.name.first.includes(filterData);
+            })
+            this.setState({items: resultado});
+        }
+        // else if(filtrarPor == "nacionalidad"){
+        //     let resultado = this.state.items.filter( (item)=> {
+        //         return item.location.country === filterData;
+        //     })
+        //     this.setState({items: resultado});
+        // }else{
+        //     // event.preventDefault();
+        // }
+    }
     
     render(){
 
@@ -53,16 +80,14 @@ class Body extends Component{
             <>
             <div className="filtrosPadre">
             <div>
-            <h4>Filtrar por nombre</h4>
-            <input className="cantidadAgregar" name="cantidad"/>
-            </div>
-            <div>
-            <h4>Filtrar por edad</h4>
-            <input className="cantidadAgregar" name="cantidad"/>
-            </div>
-            <div>
-            <h4>Filtrar por nacionalidad</h4>
-            <input className="cantidadAgregar" name="cantidad"/>
+            <h4>Filtrar por:</h4>
+            <select className="filterBy" name="filterBy">
+                <option value="edad">Edad</option>
+                <option value="nombre">Nombre</option>
+                <option value="nacionalidad">Nacionalidad</option>
+            </select>
+            <input className="filterData" name="filterData"/>
+            <button onClick={this.filtrarTarjetas}>Filtrar</button>
             </div>
             </div>
             <div className='personasPadre'>    
