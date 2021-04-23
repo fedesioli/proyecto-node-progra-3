@@ -52,27 +52,36 @@ class Body extends Component{
         console.log(filterData)
         console.log(filtrarPor)
        
-        if (filtrarPor === "edad"){
-            let resultado = this.state.items.filter( (item)=> {
-                return item.dob.age === filterData;
-            })
-            this.setState({items: resultado});
+        if(filterData != ""){
+
+            if (filtrarPor === "edad"){
+                let resultado = this.state.items.filter( (item)=> {
+                    let edad = item.dob.age
+                    let edad2 = edad.toString()
+                     return edad2.includes(filterData);
+                    console.log(edad2)
+                })
+                this.setState({items: resultado});
+                console.log(this.state.items)
+            }
+            else if(filtrarPor === "nombre"){
+                let resultado = this.state.items.filter( (item)=> {
+                    return item.name.first.includes(filterData);
+                })
+                this.setState({items: resultado});
+            }
+             else if(filtrarPor == "nacionalidad"){
+                let resultado = this.state.items.filter( (item)=> {
+                    return item.location.country.includes(filterData);
+                })
+                this.setState({items: resultado});
+             }
         }
-        else if(filtrarPor === "nombre"){
-            let resultado = this.state.items.filter( (item)=> {
-                return item.name.first.includes(filterData);
+        else{
+            this.setState({
+                items: this.state.itemsOriginales
             })
-            this.setState({items: resultado});
-        }
-        // else if(filtrarPor == "nacionalidad"){
-        //     let resultado = this.state.items.filter( (item)=> {
-        //         return item.location.country === filterData;
-        //     })
-        //     this.setState({items: resultado});
-        // }else{
-        //     // event.preventDefault();
-        // }
-    }
+        } }
     
     render(){
 
@@ -86,8 +95,8 @@ class Body extends Component{
                 <option value="nombre">Nombre</option>
                 <option value="nacionalidad">Nacionalidad</option>
             </select>
-            <input className="filterData" name="filterData"/>
-            <button onClick={this.filtrarTarjetas}>Filtrar</button>
+            <input onInput={this.filtrarTarjetas.bind(this)} className="filterData" name="filterData" type= "text"/>
+        
             </div>
             </div>
             <div className='personasPadre'>    
