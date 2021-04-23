@@ -65,14 +65,20 @@ class Body extends Component{
                 console.log(this.state.items)
             }
             else if(filtrarPor === "nombre"){
+                let filterDataMayus = filterData.toUpperCase()
+                
+
                 let resultado = this.state.items.filter( (item)=> {
-                    return item.name.first.includes(filterData);
+                    let itemDataMayus = item.name.first.toUpperCase()
+                    return itemDataMayus.includes(filterDataMayus);
                 })
                 this.setState({items: resultado});
             }
              else if(filtrarPor == "nacionalidad"){
+                let filterDataMayus = filterData.toUpperCase()            
                 let resultado = this.state.items.filter( (item)=> {
-                    return item.location.country.includes(filterData);
+                    let itemDataMayus = item.location.country.toUpperCase()
+                    return itemDataMayus.includes(filterDataMayus);
                 })
                 this.setState({items: resultado});
              }
