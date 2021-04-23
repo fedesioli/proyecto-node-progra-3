@@ -87,23 +87,50 @@ class Body extends Component{
             this.setState({
                 items: this.state.itemsOriginales
             })
-        } }
-    
+        }}
+
+        orderUp(){
+            let orderBy = document.querySelector(".orderBy").value
+            if(orderBy === "edad"){              
+                let itemsOrdenados = this.state.items.sort()
+                this.setState({items: itemsOrdenados})
+
+            } else if( orderBy === "nombre"){
+                let itemsOrdenados = this.state.items.name.first.sort()
+                this.setState({items: itemsOrdenados})
+
+            }else if(orderBy === "nacionalidad"){
+                let itemsOrdenados = this.state.items.location.country.sort()
+                this.setState({items: itemsOrdenados})
+            }
+        }
+        orderDown(){
+
+        }
     render(){
 
         return(
             <>
             <div className="filtrosPadre">
-            <div>
-            <h4>Filtrar por:</h4>
-            <select className="filterBy" name="filterBy">
-                <option value="edad">Edad</option>
-                <option value="nombre">Nombre</option>
-                <option value="nacionalidad">Nacionalidad</option>
-            </select>
-            <input onInput={this.filtrarTarjetas.bind(this)} className="filterData" name="filterData" type= "text"/>
-        
-            </div>
+                <div>
+                <h4>Filtrar por:</h4>
+                <select className="filterBy" name="filterBy">
+                    <option value="edad">Edad</option>
+                    <option value="nombre">Nombre</option>
+                    <option value="nacionalidad">Nacionalidad</option>
+                </select>
+                <input onInput={this.filtrarTarjetas.bind(this)} className="filterData" name="filterData" type= "text"/>
+                </div>
+                <div>
+                    <h4>Order by:</h4> 
+                    <select className="orderBy" name="orderBy">
+                        <option value="edad">Edad</option>
+                        <option value="nombre">Nombre</option>
+                        <option value="nacionalidad">Nacionalidad</option>
+                    </select>
+                    <i class="fas fa-sort-up" onClick={this.orderUp.bind(this)} style={{width:"30px"}}></i>
+                    <i class="fas fa-sort-down" onClick={this.orderDown.bind(this)} style={{width:"30px"}}></i>
+                </div>
             </div>
             <div className='personasPadre'>    
                 {
