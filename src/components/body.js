@@ -41,7 +41,7 @@ class Body extends Component{
         fetch("https://randomuser.me/api/?results=" + cantidad)
             .then(resource => resource.json())
             .then(data => { 
-                let dataNueva = this.state.items.push(data.results)
+                let dataNueva = this.state.items.concat(data.results)
                 this.setState({items: dataNueva})
                 console.log(dataNueva);         
             }) 
@@ -107,7 +107,7 @@ class Body extends Component{
                 <h3>
                 cuantas tarjetas desea agregar?
                 </h3>
-                <button onClick={this.agregarTarjetas}>Agregar tarjetas</button>  
+                <button onClick={this.agregarTarjetas.bind(this)}>Agregar tarjetas</button>  
                 <input className="cantidadAgregar" name="cantidad"/>
             </div>
             </> 
