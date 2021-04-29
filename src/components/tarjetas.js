@@ -11,21 +11,13 @@ class Tarjeta extends Component{
     }
 
     cambiarColorHover(){
-        if(this.state.color === "pink")
-        this.setState({
-            color: "pink",
-        })
-        else
+       
         this.setState({
             color: "lightgray",
         })
     }
     cambiarColorHover2(){
-        if(this.state.color === "pink")
-        this.setState({
-            color: "pink",
-        })
-        else
+        
         this.setState({
             color: "white",
         })

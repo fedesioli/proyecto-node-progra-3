@@ -147,11 +147,12 @@ class Body extends Component{
 
             <div style={{textAlign: "center", padding: "20px"}}>
                 <h3>
-                cuantas tarjetas desea agregar?
+                Cuantas tarjetas desea agregar?
                 </h3>
-                <button onClick={this.agregarTarjetas.bind(this)}>Agregar tarjetas</button>  
                 <input className="cantidadAgregar" name="cantidad"/>
+                <button onClick={this.agregarTarjetas.bind(this)}>Agregar tarjetas</button>  
             </div>
+           
             </> 
         )
     }
