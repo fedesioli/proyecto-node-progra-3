@@ -270,7 +270,7 @@ class Body extends Component{
             </div>
 
             <div style={{textAlign: "center"}}>
-            <button onClick={this.reset.bind(this)}>Reset Originales</button>
+            <button onClick={this.reset.bind(this)}>Reset Tarjetas</button>
             </div>
 
             <div style={{textAlign: "center", padding: "20px"}}>
