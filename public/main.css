@@ -14,6 +14,7 @@
 .characters{
   color: blue;
 }
+
 .personasPadre{
   padding: 3%;;
   display: flex;
@@ -23,9 +24,10 @@
 }
 
 .tarjetaHijo{
+  align-items: center;
   text-align: center;
-  border: 1px solid gray;
-  margin-bottom: 20px;
+  padding-left: 1%;
+  padding-right: 1%;
   font-family: 'Varela Round', sans-serif;
   letter-spacing: 1px;
   width: 50%;
@@ -36,6 +38,9 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  margin-bottom: 2%;
+  border-radius: 2%;
+  background-color: #E0E7FF;
 
 }
 .tarjetaHijo h3{
@@ -43,6 +48,7 @@
 }
 body{
   margin: 0;
+  font-family: 'Varela Round', sans-serif;
 }
 .imagenTarjeta{
   padding: 1px;
@@ -64,12 +70,44 @@ body{
 }
 
 .filtrosPadre{
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 1%;
   display: flex;
-  align-content: space-between;
   align-items: center;
-  /* flex-wrap: ; */
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 .tarjetaImagen {
   width: 50%;
   height: 100%;
+}
+
+.orderBy{
+  margin-right:10px;
+}
+
+.botonesMover{
+  padding-top: 1%;
+  display: flex;
+  justify-content: space-between;
+}
+.flechitas{
+  width: 50px;
+}
+
+button{
+  font-family: 'Varela Round', sans-serif;
+  border: transparent;
+}
+.borrar{
+  background-color: #EA3838;
+  margin-left: 3%;
+}
+.cantidadAgregar{
+  margin-right: 1%;
+}
+.botonVista{
+  padding-left: 2%;
+  padding-right: 2%;
 }

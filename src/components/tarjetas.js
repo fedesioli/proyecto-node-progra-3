@@ -39,16 +39,14 @@ class Tarjeta extends Component{
             <div className='tarjetaHijo' style = {{width: this.props.widthTarjeta, height: this.props.heightTarjeta}}>
                 <h3>{this.props.datospersona.name.first} {this.props.datospersona.name.last}</h3>
                 <h4>{this.props.datospersona.email}</h4>
-             <h4>{this.props.datospersona.dob.date.substr(0,10)} ({this.props.datospersona.dob.age})</h4>
-            
-             
-            
+                <h4>{this.props.datospersona.dob.date.substr(0,10)} ({this.props.datospersona.dob.age})</h4>    
+                <button onClick={this.verDetalles.bind(this)}>Detalles</button>
+                <button className='borrar' onClick={this.props.onDelete.bind(this, this.props.datospersona.login.uuid)}>Borrar</button>
+            </div>
+            <div className="botonesMover">
+                <i className="flechitas" onClick={this.props.moverIzq.bind(this, this.props.items, this.props.posicion)} class="fas fa-angle-double-left"></i>
+                <i className="flechitas" onClick={this.props.moverDer.bind(this, this.props.items, this.props.posicion)} class="fas fa-angle-double-right"></i>
 
-        
-            <button onClick={this.verDetalles.bind(this)}>Detalles</button>
-            <button className='borrar' onClick={this.props.onDelete.bind(this, this.props.datospersona.login.uuid)}>X</button>
-            <button onClick={this.props.moverIzq.bind(this, this.props.items, this.props.posicion)}>moverIzq</button>
-            <button onClick={this.props.moverDer.bind(this, this.props.items, this.props.posicion)}>moverDer</button>
             </div>
             <div className="detalles" style={{display:this.state.displayDetalles}}>
                 <h4>{this.props.datospersona.location.street.number} {this.props.datospersona.location.street.name}</h4>

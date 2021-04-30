@@ -200,7 +200,7 @@ class Body extends Component{
         return(
             <>
             <div className="filtrosPadre">
-                <div>
+                <div className="filtosIzq">
                 <h4>Filtrar por:</h4>
                 <select className="filterBy" name="filterBy">
                     <option value="edad">Edad</option>
@@ -209,7 +209,10 @@ class Body extends Component{
                 </select>
                 <input onInput={this.filtrarTarjetas.bind(this)} className="filterData" name="filterData" type= "text"/>
                 </div>
-                <div>
+               
+                <button className="botonVista" onClick={this.vista.bind(this)}>cambiar vista</button>
+               
+                <div className="filtosDer">
                     <h4>Order by:</h4> 
                     <select className="orderBy" name="orderBy">
                         <option value="edad">Edad</option>
@@ -220,8 +223,8 @@ class Body extends Component{
                     <i class="fas fa-sort-down" onClick={this.orderDown.bind(this)} style={{width:"30px"}}></i>
 
                 </div>
-                <button onClick={this.vista.bind(this)}>cambiar vista</button>
             </div>
+               
             <div className='personasPadre'>    
                 {
                 this.state.items.map((persona)=>(
@@ -257,7 +260,7 @@ class Body extends Component{
                 Cuantas tarjetas desea agregar?
                 </h3>
                 <input className="cantidadAgregar" name="cantidad"/>
-                <button onClick={this.agregarTarjetas.bind(this)}>Agregar tarjetas</button>  
+                <button onClick={this.agregarTarjetas.bind(this)}>Agregar</button>  
             </div>
            
             </> 
