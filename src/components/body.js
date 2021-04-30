@@ -21,6 +21,7 @@ class Body extends Component{
         }
     }
 
+    // Carga data de la api cuando se monta el componente
     componentDidMount(){
         fetch("https://randomuser.me/api/?results=20")
             .then(resource => resource.json())
@@ -30,6 +31,7 @@ class Body extends Component{
             })
     }
 
+    // aca borramos la tarjeta segun id con un evento en el componente tarjetas
     borrarTarjeta = (idTarjeta)=>{
         let resultado = this.state.items.filter( (item)=> {
     
@@ -38,10 +40,12 @@ class Body extends Component{
         this.setState({items: resultado});
     }
 
+    // aca volvemos al estado original para resetear las tarjetas
     reset(){
         this.setState({items: this.state.itemsOriginales})
     }
 
+    // aca agregamos atarjetas segun la cantidad que el usuario ponga en el input
     agregarTarjetas(){
         let cantidad = document.querySelector(".cantidadAgregar").value
         console.log(cantidad);
@@ -54,14 +58,18 @@ class Body extends Component{
                 console.log(dataNueva);         
             }) 
     }
+
+    // aca filtramos las tarjetas segun lo que el usuario ponga en el input y elija segun lo que quiera filtrar
     filtrarTarjetas(){
         let filterData = document.querySelector(".filterData").value
         let filtrarPor = document.querySelector(".filterBy").value
         console.log(filterData)
         console.log(filtrarPor)
-       
+
+    // primero nos fijamos si el input esta vacio para ver si filtramos o volvemos al estado original
         if(filterData != ""){
 
+    // aca filtramos segun lo que eigio el usuario
             if (filtrarPor === "edad"){
                 let resultado = this.state.items.filter( (item)=> {
                     let edad = item.dob.age
@@ -97,6 +105,7 @@ class Body extends Component{
             })
         }}
 
+        // ordenamos las tarjetas segun lo que quiera el usuario, descendiente
         orderUp(){
             let orderBy = document.querySelector(".orderBy").value
             if(orderBy === "edad"){              
@@ -131,6 +140,8 @@ class Body extends Component{
                 this.setState({items: itemsOrdenados})
             }
         }
+
+        // ordenamos las tarjetas segun lo que quiera el usuario, ascendiente
         orderDown(){
             let orderBy = document.querySelector(".orderBy").value
             if(orderBy === "edad"){              
@@ -165,14 +176,15 @@ class Body extends Component{
                 this.setState({items: itemsOrdenados})
             }
         }
-
-    vista(){
+    
+        // cambiamos la manera de visualizar las tarjetas a horizontal
+        vista(){
             if(this.state.flex === "column"){
                 this.setState({flex: "row", widthTarjeta:"50%", heightTarjeta: "100%", widthPadre:"40%"})
             } else {
                 this.setState({flex: "column", widthTarjeta:"100%", heightTarjeta: "50%", widthPadre: "20%"})     
             }
-    }
+        }
     // moverIzq(items, posicion){
         
     //     let array = items
@@ -185,11 +197,15 @@ class Body extends Component{
     //     console.log(array)
     //     this.Body.setState({items: array})
     // }
+
+    // movemos una tarjeta un lugar a la izquierda
     moverIzq = (items, posicion)=>{
         let array = items
         array[posicion] = array.splice(posicion-1, 1, array[posicion])[0];
         this.setState({items: array});
     }
+
+    // movemos una tarjeta un lugar a la derecha
     moverDer = (items, posicion)=>{
         let array = items
         array[posicion] = array.splice(posicion+1, 1, array[posicion])[0];
@@ -228,6 +244,8 @@ class Body extends Component{
             <div className='personasPadre'>    
                 {
                 this.state.items.map((persona)=>(
+
+                 // con un map imprimimos las tarjetas y pasamos las props que necesitamos en ese componente
                     <Tarjeta datospersona = 
                         {persona} 
                         key={persona.login.uuid}
@@ -241,11 +259,11 @@ class Body extends Component{
                         posicion={this.state.items.indexOf(persona)}
                         moverIzq= {this.moverIzq}
                         moverDer= {this.moverDer}
-                        items= {this.state.items}/> 
+                        items= {this.state.items}
+                    /> 
                         
-                        )
-                        )
-                    }   
+                    ))
+                }   
                    
 
             
