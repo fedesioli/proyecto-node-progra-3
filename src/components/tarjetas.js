@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Body from "./body";
 
 class Tarjeta extends Component{
 
@@ -23,6 +24,7 @@ class Tarjeta extends Component{
             })
     }  
     
+    
 
 
     render(){
@@ -45,6 +47,8 @@ class Tarjeta extends Component{
         
             <button onClick={this.verDetalles.bind(this)}>Detalles</button>
             <button className='borrar' onClick={this.props.onDelete.bind(this, this.props.datospersona.login.uuid)}>X</button>
+            <button onClick={this.props.moverIzq.bind(this, this.props.items, this.props.posicion)}>moverIzq</button>
+            <button onClick={this.props.moverDer.bind(this, this.props.items, this.props.posicion)}>moverDer</button>
             </div>
             <div className="detalles" style={{display:this.state.displayDetalles}}>
                 <h4>{this.props.datospersona.location.street.number} {this.props.datospersona.location.street.name}</h4>

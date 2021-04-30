@@ -32,6 +32,7 @@ class Body extends Component{
 
     borrarTarjeta = (idTarjeta)=>{
         let resultado = this.state.items.filter( (item)=> {
+    
             return item.login.uuid !== idTarjeta;
         })
         this.setState({items: resultado});
@@ -66,7 +67,7 @@ class Body extends Component{
                     let edad = item.dob.age
                     let edad2 = edad.toString()
                      return edad2.includes(filterData);
-                    console.log(edad2)
+                    
                 })
                 this.setState({items: resultado});
                 console.log(this.state.items)
@@ -165,13 +166,35 @@ class Body extends Component{
             }
         }
 
-        vista(){
+    vista(){
             if(this.state.flex === "column"){
                 this.setState({flex: "row", widthTarjeta:"50%", heightTarjeta: "100%", widthPadre:"40%"})
             } else {
                 this.setState({flex: "column", widthTarjeta:"100%", heightTarjeta: "50%", widthPadre: "20%"})     
             }
-        }
+    }
+    // moverIzq(items, posicion){
+        
+    //     let array = items
+    //     // let variable = array[posicion - 1]
+    //     // array.splice(posicion-1,0,array[posicion])
+       
+    //         array[posicion] = array.splice(posicion-1, 1, array[posicion])[0];
+      
+    //     // array[posicion] = variable
+    //     console.log(array)
+    //     this.Body.setState({items: array})
+    // }
+    moverIzq = (items, posicion)=>{
+        let array = items
+        array[posicion] = array.splice(posicion-1, 1, array[posicion])[0];
+        this.setState({items: array});
+    }
+    moverDer = (items, posicion)=>{
+        let array = items
+        array[posicion] = array.splice(posicion+1, 1, array[posicion])[0];
+        this.setState({items: array});
+    }
     render(){
 
         return(
@@ -211,9 +234,17 @@ class Body extends Component{
                         widthTarjeta={this.state.widthTarjeta}
                         heightTarjeta={this.state.heightTarjeta}
                         widthPadre={this.state.widthPadre}
-                        onDelete={this.borrarTarjeta}/> 
-                ))
-                }   
+                        onDelete={this.borrarTarjeta}
+                        posicion={this.state.items.indexOf(persona)}
+                        moverIzq= {this.moverIzq}
+                        moverDer= {this.moverDer}
+                        items= {this.state.items}/> 
+                        
+                        )
+                        )
+                    }   
+                   
+
             
             </div>
 
