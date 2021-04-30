@@ -189,13 +189,10 @@ class Body extends Component{
         
     //     let array = items
     //     // let variable = array[posicion - 1]
-    //     // array.splice(posicion-1,0,array[posicion])
-       
-    //         array[posicion] = array.splice(posicion-1, 1, array[posicion])[0];
-      
+    //     // array.splice(posicion-1,posicion+1,array[posicion])    
     //     // array[posicion] = variable
     //     console.log(array)
-    //     this.Body.setState({items: array})
+    //     this.setState({items: array})
     // }
 
     // movemos una tarjeta un lugar a la izquierda
