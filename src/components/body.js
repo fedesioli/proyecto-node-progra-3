@@ -9,7 +9,14 @@ class Body extends Component{
         super(props);
         this.state = {
             items: [],
-            itemsOriginales: []
+            itemsOriginales: [],
+            flex: "column",
+            widthTarjeta: "100%", 
+            heightTarjeta: "100%",
+            widthPadre: "20%"
+        
+
+
            
         }
     }
@@ -92,20 +99,78 @@ class Body extends Component{
         orderUp(){
             let orderBy = document.querySelector(".orderBy").value
             if(orderBy === "edad"){              
-                let itemsOrdenados = this.state.items.sort()
+                let itemsOrdenados = this.state.items.sort( function(a,b){
+                    return a.dob.age - b.dob.age
+                })
                 this.setState({items: itemsOrdenados})
 
             } else if( orderBy === "nombre"){
-                let itemsOrdenados = this.state.items.name.first.sort()
+                  
+                let itemsOrdenados = this.state.items.sort(function ( a, b ) {
+                    if ( a.name.first.toLowerCase() < b.name.first.toLowerCase()){
+                      return -1;
+                    }
+                    if ( a.name.first.toLowerCase() > b.name.first.toLowerCase() ){
+                      return 1;
+                    }
+                    return 0;
+                  })
                 this.setState({items: itemsOrdenados})
 
             }else if(orderBy === "nacionalidad"){
-                let itemsOrdenados = this.state.items.location.country.sort()
+                let itemsOrdenados = this.state.items.sort(function ( a, b ) {
+                    if ( a.location.country.toLowerCase() < b.location.country.toLowerCase()){
+                      return -1;
+                    }
+                    if ( a.location.country.toLowerCase() > b.location.country.toLowerCase() ){
+                      return 1;
+                    }
+                    return 0;
+                  })
                 this.setState({items: itemsOrdenados})
             }
         }
         orderDown(){
+            let orderBy = document.querySelector(".orderBy").value
+            if(orderBy === "edad"){              
+                let itemsOrdenados = this.state.items.sort( function(a,b){
+                    return b.dob.age - a.dob.age
+                })
+                this.setState({items: itemsOrdenados})
 
+            } else if( orderBy === "nombre"){
+                  
+                let itemsOrdenados = this.state.items.sort(function ( a, b ) {
+                    if ( a.name.first.toLowerCase() < b.name.first.toLowerCase()){
+                      return 1;
+                    }
+                    if ( a.name.first.toLowerCase() > b.name.first.toLowerCase() ){
+                      return -1;
+                    }
+                    return 0;
+                  })
+                this.setState({items: itemsOrdenados})
+
+            }else if(orderBy === "nacionalidad"){
+                let itemsOrdenados = this.state.items.sort(function ( a, b ) {
+                    if ( a.location.country.toLowerCase() < b.location.country.toLowerCase()){
+                      return 1;
+                    }
+                    if ( a.location.country.toLowerCase() > b.location.country.toLowerCase() ){
+                      return -1;
+                    }
+                    return 0;
+                  })
+                this.setState({items: itemsOrdenados})
+            }
+        }
+
+        vista(){
+            if(this.state.flex === "column"){
+                this.setState({flex: "row", widthTarjeta:"50%", heightTarjeta: "100%", widthPadre:"40%"})
+            } else {
+                this.setState({flex: "column", widthTarjeta:"100%", heightTarjeta: "50%", widthPadre: "20%"})     
+            }
         }
     render(){
 
@@ -130,12 +195,23 @@ class Body extends Component{
                     </select>
                     <i class="fas fa-sort-up" onClick={this.orderUp.bind(this)} style={{width:"30px"}}></i>
                     <i class="fas fa-sort-down" onClick={this.orderDown.bind(this)} style={{width:"30px"}}></i>
+
                 </div>
+                <button onClick={this.vista.bind(this)}>cambiar vista</button>
             </div>
             <div className='personasPadre'>    
                 {
                 this.state.items.map((persona)=>(
-                    <Tarjeta datospersona = {persona} key={persona.login.uuid} color="white" displayDetalle="none" onDelete={this.borrarTarjeta}/> 
+                    <Tarjeta datospersona = 
+                        {persona} 
+                        key={persona.login.uuid}
+                        color="white" 
+                        displayDetalle="none" 
+                        flex={this.state.flex}
+                        widthTarjeta={this.state.widthTarjeta}
+                        heightTarjeta={this.state.heightTarjeta}
+                        widthPadre={this.state.widthPadre}
+                        onDelete={this.borrarTarjeta}/> 
                 ))
                 }   
             

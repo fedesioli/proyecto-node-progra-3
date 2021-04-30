@@ -28,11 +28,15 @@
   margin-bottom: 20px;
   font-family: 'Varela Round', sans-serif;
   letter-spacing: 1px;
+  width: 50%;
+  height: 100%;
 }
 .tarjetaPadre{
   padding: 10px;
-  width: 20%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+
 }
 .tarjetaHijo h3{
  color:  blue;
@@ -43,6 +47,7 @@ body{
 .imagenTarjeta{
   padding: 1px;
   width: 100%;
+  height: 100%;
 }
 .footerPadre{
   background-color: #E0E7FF;
@@ -62,5 +67,9 @@ body{
   display: flex;
   align-content: space-between;
   align-items: center;
-  flex-wrap: ;
+  /* flex-wrap: ; */
+}
+.tarjetaImagen {
+  width: 50%;
+  height: 100%;
 }
